@@ -1,0 +1,54 @@
+<div ng-controller="MainCtrl">
+    <div class="row jumbotron">
+        <h1>Weather Forecast</h1>
+        <p class="lead">
+            <img src="images/logo.svg" alt="Logo">
+            <br> Do you want to know weather in your city?
+        </p>
+    </div>
+    <div class="row">
+        <div class="container-fluid">
+            <form validate class="navbar-form navbar" role="search">
+                <div class="input-group container">
+                    <input type="text" class="form-control city-input" placeholder="Weather forecast for..." ng-model="city" ng-pattern="/\w+/">
+                    <span class="input-group-btn"><button type="submit" class="btn btn-default" type="button" ng-click="searchCity()" value="Save">Search</button></span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-show="currentCityWF" class="panel panel-info">
+            <div class="panel-heading">
+                <h3><span class="label label-info">{{currentCityWF.name}}, {{currentCityWF.sys.country}}</span></h3></div>
+            <div class="panel-body">
+                <div class="col-4">
+                    <table class="wf_data_container table table-hover table-responsive table-bordered" ng-show="currentData">
+                        <tr>
+                            <th>Weather</th>
+                            <td>{{currentCityWF.weather[0].main}}</td>
+                        </tr>
+                        <tr>
+                            <th>Temperature</th>
+                            <td>{{currentCityWF.main.temp | number:0}}</td>
+                        </tr>
+                        <tr>
+                            <th>Humidity</th>
+                            <td>{{currentCityWF.main.humidity}}</td>
+                        </tr>
+                        <tr>
+                            <th>Wind</th>
+                            <td>{{currentCityWF.wind.speed}}</td>
+                        </tr>
+                        <tr>
+                            <th>Clouds</th>
+                            <td>{{currentCityWF.clouds.all}}</td>
+                        </tr>
+                        </tr>
+                    </table>
+                </div>
+                <div ng-show="currentDataNextF" class="col-8">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
